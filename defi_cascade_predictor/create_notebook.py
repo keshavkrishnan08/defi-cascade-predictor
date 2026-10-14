@@ -2429,7 +2429,7 @@ print("ExperimentRunner defined (9-phase pipeline).")
 '''))
 
 # ============================================================
-# CELL 20: Markdown — Run Experiment
+# CELL 20: Markdown: Run Experiment
 # ============================================================
 cells.append(nbf.v4.new_markdown_cell(
 '''## 8. Run Full Experiment
@@ -2439,7 +2439,7 @@ Set `QUICK_MODE = False` in the Configuration cell for full training (~2-4 hours
 '''))
 
 # ============================================================
-# CELL 21: Code — Run pipeline
+# CELL 21: Code: Run pipeline
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
@@ -2477,7 +2477,7 @@ print("\\nOutputs saved to ./outputs/")
 '''))
 
 # ============================================================
-# CELL 22: Markdown — Results Analysis
+# CELL 22: Markdown: Results Analysis
 # ============================================================
 cells.append(nbf.v4.new_markdown_cell(
 '''## 9. Results Analysis
@@ -2486,7 +2486,7 @@ Detailed metrics, statistical tests, and ablation study results.
 '''))
 
 # ============================================================
-# CELL 23: Code — Detailed results + inline figures
+# CELL 23: Code: Detailed results + inline figures
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================

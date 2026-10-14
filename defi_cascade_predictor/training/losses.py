@@ -16,7 +16,7 @@ class FocalLoss(nn.Module):
 
     FL(p_t) = -alpha_t * (1 - p_t)^gamma * log(p_t)
 
-    Uses ONLY focal modulation (gamma) and alpha balancing — no additional
+    Uses ONLY focal modulation (gamma) and alpha balancing, no additional
     pos_weight multiplier, which would create triple-redundant weighting
     and unstable gradients.
 

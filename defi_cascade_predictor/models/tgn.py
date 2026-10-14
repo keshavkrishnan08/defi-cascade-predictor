@@ -2,13 +2,13 @@
 Temporal Graph Network (TGN) for DeFi Liquidation Cascade Prediction.
 
 Core architecture:
-  1. Memory Module — per-node GRU memory tracking protocol state evolution
-  2. Time Encoding — learnable continuous-time positional encoding
-  3. Feature Gate — learned feature selection (TGIB-inspired)
-  4. Embedding Module — graph attention over temporal neighborhoods
-  5. Temporal Attention — attends over neighbor node history with time encoding
-  6. Multi-Scale Temporal Context — pools memory at multiple recency scales
-  7. Multi-horizon Prediction Heads — cascade probability at 1d/3d/7d/30d
+  1. Memory Module: per-node GRU memory tracking protocol state evolution
+  2. Time Encoding: learnable continuous-time positional encoding
+  3. Feature Gate: learned feature selection (TGIB-inspired)
+  4. Embedding Module: graph attention over temporal neighborhoods
+  5. Temporal Attention: attends over neighbor node history with time encoding
+  6. Multi-Scale Temporal Context: pools memory at multiple recency scales
+  7. Multi-horizon Prediction Heads: cascade probability at 1d/3d/7d/30d
 
 Reference: Rossi et al., "Temporal Graph Networks for Deep Learning on
 Dynamic Graphs", ICML 2020 Workshop on GRL.
@@ -66,7 +66,7 @@ class TemporalGraphNetwork(nn.Module):
             nn.Dropout(dropout),
         )
 
-        # 2. Feature gate — learned feature selection (TGIB-inspired)
+        # 2. Feature gate: learned feature selection (TGIB-inspired)
         self.feature_gate = nn.Sequential(
             nn.Linear(embedding_dim, embedding_dim),
             nn.Sigmoid(),
@@ -176,7 +176,7 @@ class TemporalGraphNetwork(nn.Module):
     ) -> tuple[torch.Tensor, torch.Tensor]:
         """Gather neighbor node features and edge features for temporal attention.
 
-        Vectorized — no Python loops over edges.
+        Vectorized: no Python loops over edges.
 
         Returns:
             neighbor_features: [num_nodes, max_neighbors, embedding_dim]
@@ -205,7 +205,7 @@ class TemporalGraphNetwork(nn.Module):
                 )
 
         if not all_dst:
-            # No edges — return self-loops as dummy neighbors
+            # No edges: return self-loops as dummy neighbors
             return (
                 x.unsqueeze(1),  # [N, 1, emb]
                 torch.zeros(num_nodes, 1, self.edge_feature_dim, device=device),
@@ -290,7 +290,7 @@ class TemporalGraphNetwork(nn.Module):
             ts = timestamps
         time_delta = ts - self.memory.last_update[:self.num_nodes].to(device)
         time_delta = time_delta.clamp(min=0)
-        # Normalize to days (timestamps are Unix seconds — raw deltas ~1e9)
+        # Normalize to days (timestamps are Unix seconds, raw deltas ~1e9)
         time_delta = time_delta / 86400.0
         time_enc = self.time_encoder(time_delta)  # [num_nodes, time_encoding_dim]
 
@@ -309,7 +309,7 @@ class TemporalGraphNetwork(nn.Module):
         neighbor_feats, edge_feats = self._build_neighbor_features(
             x, edge_index_dict, edge_attr_dict
         )
-        # Neighbor time encodings (use zeros — all from same snapshot)
+        # Neighbor time encodings (use zeros: all from same snapshot)
         neighbor_time_enc = torch.zeros(
             self.num_nodes, neighbor_feats.size(1), self.time_encoding_dim,
             device=device

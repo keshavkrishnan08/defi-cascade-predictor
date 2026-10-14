@@ -1,5 +1,5 @@
 """
-Experiment orchestrator — FULL PIPELINE.
+Experiment orchestrator: FULL PIPELINE.
 
 Runs end-to-end:
   1. Load real TVL data + derive supplementary features
@@ -46,13 +46,13 @@ from evaluation.visualization import PaperVisualizer
 
 
 # ---------------------------------------------------------------------------
-# Real Data Pipeline — loads real TVL data + derives supplementary features
+# Real Data Pipeline: loads real TVL data + derives supplementary features
 # ---------------------------------------------------------------------------
 
 class RealDataPipeline:
     """Loads real DeFiLlama TVL data and derives supplementary features.
 
-    The primary predictive signal comes from REAL TVL data — no artificial
+    The primary predictive signal comes from REAL TVL data, no artificial
     signal injection. Supplementary features (prices, lending, macro) are
     derived from TVL dynamics or reconstructed from publicly known values.
     """
@@ -491,7 +491,7 @@ class ExperimentRunner:
                               np.log1p(cur_tvl * lend[0]), lend[0],
                               lend[3], 0.0])
 
-                # Network features (6) — constant
+                # Network features (6): constant
                 nf = net_features.get(self.protocols[j], np.zeros(6))
                 feats.extend(nf.tolist())
 
@@ -618,7 +618,7 @@ class ExperimentRunner:
             dtype=torch.float32,
         )
 
-        # Temporal split — date-based to ensure cascade events in each partition
+        # Temporal split: date-based to ensure cascade events in each partition
         if hasattr(self, "_split_dates") and self._split_dates:
             train_end_date = self._split_dates["train_end"]
             val_end_date = self._split_dates["val_end"]

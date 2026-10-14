@@ -389,7 +389,7 @@ def run_platt_scaling(prepared, test_preds=None, test_targets=None):
         print("Training TGN for calibration experiment...")
         _, (val_preds, val_targets), (test_preds, test_targets), _ = train_tgn_single(prepared, seed=42)
     else:
-        # Need val predictions too — retrain
+        # Need val predictions too: retrain
         print("Training TGN to get val predictions...")
         _, (val_preds, val_targets), (test_preds, test_targets), _ = train_tgn_single(prepared, seed=42)
 
@@ -644,7 +644,7 @@ def main():
     exp3 = run_ensemble(prepared_full)
     all_results["ensemble"] = {k: v for k, v in exp3.items() if k != "test_targets"}
 
-    # Experiment 4: Edge-type ablation (GPU only — too slow on CPU)
+    # Experiment 4: Edge-type ablation (GPU only, too slow on CPU)
     if GPU:
         exp4 = run_edge_ablation(prepared_full)
         all_results["edge_ablation"] = exp4

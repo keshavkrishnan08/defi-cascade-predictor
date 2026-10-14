@@ -13,7 +13,7 @@ class XGBoostCascadePredictor:
     """XGBoost baseline using hand-crafted tabular features.
 
     Features include: aggregated protocol features, network centrality
-    metrics, and rolling statistics — without any graph neural network
+    metrics, and rolling statistics: without any graph neural network
     or temporal deep learning components.
     """
 

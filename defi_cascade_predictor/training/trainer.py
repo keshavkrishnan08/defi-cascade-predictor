@@ -147,7 +147,7 @@ class Trainer:
 
         Uses windowed TBPTT: accumulates loss over tbptt_window steps,
         backprops once, then detaches memory at the window boundary.
-        Memory is NOT reset at epoch start — it persists across epochs.
+        Memory is NOT reset at epoch start: it persists across epochs.
         """
         self.model.train()
         epoch_loss = 0.0

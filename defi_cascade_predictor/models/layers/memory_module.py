@@ -41,7 +41,7 @@ class MemoryModule(nn.Module):
         self.memory_dim = memory_dim
         self.message_dim = message_dim
 
-        # Memory storage — kept as a plain tensor (not buffer) so that
+        # Memory storage: kept as a plain tensor (not buffer) so that
         # gradient-carrying tensors can be assigned without autograd issues.
         # Device management is handled explicitly in reset_memory / to().
         self.memory: torch.Tensor = torch.zeros(num_nodes, memory_dim)
@@ -123,7 +123,7 @@ class MemoryModule(nn.Module):
         messages: torch.Tensor,
         timestamps: Optional[torch.Tensor] = None,
     ):
-        """Update memory vectors — gradients flow through for TBPTT.
+        """Update memory vectors: gradients flow through for TBPTT.
 
         Creates a new tensor (no in-place modification) so that autograd
         can track the dependency chain across timesteps.

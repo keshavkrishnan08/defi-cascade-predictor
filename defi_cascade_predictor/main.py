@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-DeFi Liquidation Cascade Predictor — Main Entry Point
+DeFi Liquidation Cascade Predictor: Main Entry Point
 
 Predicting DeFi Liquidation Cascades Using Temporal Graph Neural
 Networks on Cross-Protocol Composability Graphs
