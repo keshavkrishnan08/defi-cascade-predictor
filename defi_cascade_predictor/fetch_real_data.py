@@ -59,7 +59,7 @@ def fetch_json(url, retries=3, delay=1):
                 print(f"  Retry {attempt+1}/{retries} for {url[:80]}... ({e})")
                 time.sleep(delay * (attempt + 1))
             else:
-                print(f"  FAILED: {url[:80]},{e}")
+                print(f"  FAILED: {url[:80]}, {e}")
                 return None
 
 # ============================================================
