@@ -19,7 +19,7 @@ cells.append(nbf.v4.new_markdown_cell(
 
 *Target: IEEE Transactions on Computational Social Systems (TCSS)*
 
-This notebook contains the **complete, self-contained** implementation. All code is inline — no external files needed. Runs on **Kaggle**, **Google Colab**, or locally.
+This notebook contains the **complete, self-contained** implementation. All code is inline, no external files needed. Runs on **Kaggle**, **Google Colab**, or locally.
 
 **Pipeline (9 phases):**
 1. Synthetic data generation with realistic cascade signals
@@ -204,7 +204,7 @@ We generate realistic synthetic DeFi protocol data with injected cascade signals
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# CascadeLabeler — ground truth labels for cascade prediction
+# CascadeLabeler: ground truth labels for cascade prediction
 # FIX 2: Active period only labeled positive for 168h horizon
 # ============================================================
 
@@ -260,7 +260,7 @@ print("CascadeLabeler defined.")
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# SyntheticDataGenerator — realistic DeFi data with cascade signals
+# SyntheticDataGenerator: realistic DeFi data with cascade signals
 # FIX 1: Reduced signal magnitude + noise for realistic difficulty
 # FIX 5: Per-protocol sensitivity based on event severity
 # ============================================================
@@ -483,7 +483,7 @@ cells.append(nbf.v4.new_markdown_cell(
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# FeatureEngineer — protocol-level features for composability graph
+# FeatureEngineer: protocol-level features for composability graph
 # ============================================================
 
 class FeatureEngineer:
@@ -556,7 +556,7 @@ print("FeatureEngineer defined.")
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# ComposabilityGraphConstructor — DeFi cross-protocol dependency graph
+# ComposabilityGraphConstructor: DeFi cross-protocol dependency graph
 # ============================================================
 
 class ComposabilityGraphConstructor:
@@ -685,10 +685,10 @@ cells.append(nbf.v4.new_markdown_cell(
 
 ### Temporal Graph Network (TGN)
 The core model combines:
-1. **Memory Module** — per-node GRU memory tracking protocol state evolution
-2. **Time Encoding** — learnable continuous-time positional encoding
-3. **Graph Attention** — heterogeneous message passing with per-edge-type attention
-4. **Multi-horizon Prediction** — cascade probability at 1h, 6h, 24h, 7d
+1. **Memory Module** per-node GRU memory tracking protocol state evolution
+2. **Time Encoding** learnable continuous-time positional encoding
+3. **Graph Attention** heterogeneous message passing with per-edge-type attention
+4. **Multi-horizon Prediction** cascade probability at 1h, 6h, 24h, 7d
 
 ### Baselines
 - **Static GNN** (GAT): same graph, no temporal components
@@ -849,7 +849,7 @@ print("Layer modules defined: TimeEncoding, MemoryModule, MessagePassingLayer, H
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# Temporal Graph Network (TGN) — core model
+# Temporal Graph Network (TGN): core model
 # ============================================================
 
 class TemporalGraphNetwork(nn.Module):
@@ -932,7 +932,7 @@ print("TemporalGraphNetwork defined.")
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# Loss Functions — FocalLoss for extreme class imbalance
+# Loss Functions: FocalLoss for extreme class imbalance
 # ============================================================
 
 class FocalLoss(nn.Module):
@@ -1243,7 +1243,7 @@ cells.append(nbf.v4.new_markdown_cell(
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# MetricsCalculator — FIX 4: optimal threshold for F1
+# MetricsCalculator: FIX 4: optimal threshold for F1
 # ============================================================
 
 class MetricsCalculator:
@@ -1392,7 +1392,7 @@ print("MetricsCalculator (with optimal threshold) and StatisticalTestSuite defin
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# PaperVisualizer — IEEE-style publication figures
+# PaperVisualizer: IEEE-style publication figures
 # ============================================================
 
 COLORS = {"TGN": "#2196F3", "Static GNN": "#FF9800", "LSTM": "#4CAF50",
@@ -1506,7 +1506,7 @@ The `ExperimentRunner` orchestrates all 9 phases of the experimental pipeline. I
 # ============================================================
 cells.append(nbf.v4.new_code_cell(
 '''# ============================================================
-# ExperimentRunner — Full 9-Phase Pipeline
+# ExperimentRunner: Full 9-Phase Pipeline
 # ============================================================
 
 class ExperimentRunner:
@@ -1649,7 +1649,7 @@ class ExperimentRunner:
         nf_array = np.clip((nf_array - self._feat_mean) / self._feat_std, -10, 10)
         logger.info(f"Normalization: computed on training split [:{ train_end}] ({train_end}/{len(nf_array)} timesteps)")
 
-        # Add mild measurement noise (std=0.02) — realistic sensor noise without destroying signals
+        # Add mild measurement noise (std=0.02): realistic sensor noise without destroying signals
         nf_array += np.random.default_rng(42).normal(0, 0.02, nf_array.shape).astype(np.float32)
 
         return {"constructor": constructor, "engineer": engineer, "adjacency": adjacency,
@@ -1956,7 +1956,7 @@ class ExperimentRunner:
                     bp = {f"cascade_{h}h": [] for h in self.horizons}
                     bt = {f"cascade_{h}h": [] for h in self.horizons}
                     for t in range(*test_sl.indices(len(nf))):
-                        # TVL features are first 8 dims — NEGATE so TVL drop = high stress
+                        # TVL features are first 8 dims: NEGATE so TVL drop = high stress
                         stress = -nf[t, :, :8].numpy().mean(axis=1)
                         state = 1.0 / (1.0 + np.exp(-stress))  # sigmoid to [0,1]
                         sir_pred = bl["model"].predict(state)

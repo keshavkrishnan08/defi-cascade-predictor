@@ -5,7 +5,7 @@
 13:00:48 | INFO    | Target: IEEE Trans. Computational Social Systems
 13:00:48 | INFO    | ============================================================
 13:01:26 | INFO    | ======================================================================
-13:01:26 | INFO    | DeFi LIQUIDATION CASCADE PREDICTOR — FULL PIPELINE
+13:01:26 | INFO    | DeFi LIQUIDATION CASCADE PREDICTOR, FULL PIPELINE
 13:01:26 | INFO    | Device: cpu
 13:01:26 | INFO    | ======================================================================
 13:01:26 | INFO    | ============================================================

@@ -2873,7 +2873,7 @@ class ExperimentRunner:
     # ------------------------------------------------------------------ #
     def run_full_pipeline(self) -> dict:
         logger.info("=" * 70)
-        logger.info("DeFi LIQUIDATION CASCADE PREDICTOR — FULL PIPELINE")
+        logger.info("DeFi LIQUIDATION CASCADE PREDICTOR, FULL PIPELINE")
         logger.info(f"Device: {self.device}")
         logger.info("=" * 70)
         t0 = _time.time()

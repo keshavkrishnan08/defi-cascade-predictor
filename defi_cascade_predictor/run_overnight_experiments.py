@@ -489,7 +489,7 @@ def run_exp4_leave_event_out():
 def main():
     t0 = time.time()
     print("=" * 70)
-    print("OVERNIGHT EXPERIMENTS — Addressing 5 Reviewer Vulnerabilities")
+    print("OVERNIGHT EXPERIMENTS, Addressing 5 Reviewer Vulnerabilities")
     print(f"Device: {DEVICE} | Max epochs: {EPOCHS} | Seeds: {SEEDS}")
     print(f"Started: {time.strftime('%Y-%m-%d %H:%M:%S')}")
     print("=" * 70)

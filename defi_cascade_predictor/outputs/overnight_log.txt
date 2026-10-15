@@ -300,7 +300,7 @@
 2026-03-10 01:33:10.803 | INFO     | experiments.run_experiments:prepare_data:646 -   test cascade_168h positive rate: 0.1117
 2026-03-10 01:33:10.803 | INFO     | experiments.run_experiments:prepare_data:646 -   test cascade_720h positive rate: 0.2197
 ======================================================================
-OVERNIGHT EXPERIMENTS — Addressing 5 Reviewer Vulnerabilities
+OVERNIGHT EXPERIMENTS, Addressing 5 Reviewer Vulnerabilities
 Device: cpu | Max epochs: 60 | Seeds: [42, 123, 456, 789, 1337]
 Started: 2026-03-09 23:02:24
 ======================================================================

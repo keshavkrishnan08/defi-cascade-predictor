@@ -650,7 +650,7 @@ def main():
         all_results["edge_ablation"] = exp4
     else:
         print("\n" + "=" * 70)
-        print("SKIPPING EXPERIMENT 4 (Edge Ablation) — CPU too slow")
+        print("SKIPPING EXPERIMENT 4 (Edge Ablation), CPU too slow")
         print("Run on GPU for full results")
         print("=" * 70)
 

@@ -1,5 +1,5 @@
 # ============================================================
-# DeFi Liquidation Cascade Predictor — Configuration
+# DeFi Liquidation Cascade Predictor: Configuration
 # IEEE TCSS Paper: Temporal GNN for Cross-Protocol Cascades
 # ============================================================
 
@@ -182,7 +182,7 @@ training:
   # Class imbalance handling
   pos_weight: 10.0  # positive class weight for BCE loss
   focal_loss_gamma: 2.0
-  # Prediction horizons (hours) — daily snapshots so minimum useful is 24h
+  # Prediction horizons (hours): daily snapshots so minimum useful is 24h
   prediction_horizons: [24, 72, 168, 720]  # 1d, 3d, 7d, 30d
   # Scheduler
   scheduler:
